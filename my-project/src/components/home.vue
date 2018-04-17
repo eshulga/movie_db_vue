@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-      <app-header />
       <div class="movies-wrapper">
         <short-card v-for="item in itemsColection"
                     :key="item.id"
@@ -15,20 +14,18 @@
 
 <script>
 
-import Header from './header.vue'
 import ShortCard from './shortCard.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
 
   components: {
-    AppHeader: Header,
     ShortCard: ShortCard
   },
 
   data () {
     return {
-      key: 'b4a2ddcffbf736c3e738a03f5fcc609c',
+      key: this.$root.config.apiKey,
       itemsColection: [],
       msg: 'Welcome to Your Vue.js App'
     }
@@ -44,13 +41,10 @@ export default {
       data.results.forEach(element => {
         this.itemsColection.push(element)
       })
-
-      console.log(this.itemsColection)
     },
 
     getItems: function () {
-      console.log('ok')
-      fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=' + this.key + '&language=en-US&page=1').then(res => res.json()).then(data => { this.addItemsToCollection(data) })
+      fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=' + this.key + '&language=ru-RU&page=1').then(res => res.json()).then(data => { this.addItemsToCollection(data) })
     }
   }
 
@@ -60,10 +54,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
   .movies-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1170px;
     position: relative;
     margin: 0 auto;
+    padding: 25px 0;
+    max-width: 1170px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 </style>
