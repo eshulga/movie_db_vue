@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <div>
         <div class="header-top-line"></div>
         <div class="header-line">
             <div @click="toggleSidebar()" class="sidebar-toggle" :class="{ open: toggleActive }" id="nav-icon">
@@ -9,13 +9,14 @@
             </div>
             <h1>TOP-киношка</h1>
         </div>
-        <sidebar />
+        <Sidebar/>
+        <Dialog />
         <div class="header-bootom-line">
             <div class="wrapper">
                 <input type="text" v-model="search" v-on:change="searchMovie()" placeholder="Поиск...   ">
             </div>
         </div>
-    </header>
+    </div>
 </template>
 
 <script src="./Header.js">

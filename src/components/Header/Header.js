@@ -1,9 +1,11 @@
 import Sidebar from '../Sidebar/sidebar.vue'
+import Dialog from '../Dialog/dialog.vue'
 
 const Header = {
   name: 'app-header',
   components: {
-    sidebar: Sidebar
+    Sidebar,
+    Dialog
   },
   data: function() {
     return {

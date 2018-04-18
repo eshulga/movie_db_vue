@@ -1,10 +1,6 @@
-import Header from '../Header/header.vue'
 
 const App =  {
-  name: 'App',
-  components: {
-    AppHeader: Header
-  }
+  name: 'App'
 }
 
 export default App
