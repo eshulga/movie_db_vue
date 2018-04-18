@@ -6,7 +6,7 @@
       <div class="short-card__description">
         <h2>{{title}}</h2>
         <p>{{overview}}</p>
-        <router-link :to="{ 'name': 'movie', 'params': { 'id': id} }">Подробнее</router-link>
+        <router-link :to="{ 'name': 'movie', 'params': { 'id': id } }">Подробнее</router-link>
       </div>
   </div>
 </template>

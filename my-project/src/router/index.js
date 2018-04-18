@@ -10,7 +10,8 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      props: (route) => ({ initSearch: route.query.search })
     },
     {
       path: '/movie/:id',

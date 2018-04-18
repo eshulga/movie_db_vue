@@ -10,6 +10,11 @@
             <h1>TOP-киношка</h1>
         </div>
         <sidebar />
+        <div class="header-bootom-line">
+            <div class="wrapper">
+                <input type="text" v-model="search" v-on:keyup.enter="searchMovie()" placeholder="Поиск...   ">
+            </div>
+        </div>
     </header>
 </template>
 
@@ -24,13 +29,20 @@ export default {
   },
   data: function () {
     return {
-      toggleActive: false
+      toggleActive: false,
+      search: ''
     }
   },
   methods: {
+    onScroll () {
+      console.log(this.$el.offsetHeigh)
+    },  
     toggleSidebar () {
       this.toggleActive = !this.toggleActive
       this.$emit('toggleSidebar')
+    },
+    searchMovie () {
+        this.$router.push({ path : '/', query: { search : this.search }})
     }
   }
 }
@@ -40,9 +52,37 @@ export default {
 
     @import '../scss/variables.scss';
 
-    .header {
-
+    .wrapper {
         position: relative;
+        margin: 0 auto;
+        max-width: $container-max-width;
+        background-color: #fff;
+
+        input[type=text] {
+            padding: 15px 0;
+            width: 100%;
+            border: none;
+        }
+
+        input[type=text]:focus {
+            outline: none;
+        }
+    }
+
+    header {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        margin-bottom: 10px;
+        top: 0px;
+        z-index: 99;
+    }
+
+    .header {
+        position: relative;
+        top: 60px;
         z-index: 999;
 
         &-top-line {
@@ -58,6 +98,13 @@ export default {
             align-items: center;
             min-height: 80px;
             background-color: $color-primary-light;
+        }
+
+        &-bootom-line {
+            background-color: #fff;
+            -webkit-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.3);
+            box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.3);
         }
 
         h1 {
