@@ -1,25 +1,4 @@
-<template>
-  <div id="app">
-    <app-header />
-    <router-view/>
-  </div>
-</template>
-
-<script>
-
-import Header from './components/header.vue'
-
-export default {
-  name: 'App',
-  components: {
-    AppHeader: Header
-  }
-}
-</script>
-
-<style lang="scss">
-
-@import './scss/variables.scss';
+@import '../../scss/variables.scss';
 
 * {
   box-sizing: border-box;
@@ -38,4 +17,3 @@ body {
   text-align: center;
   color: $text-color-primary;
 }
-</style>

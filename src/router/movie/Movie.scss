@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+
+.wrapper {
+  padding-top: 25px;
+  position: relative;
+  margin: 0 auto;
+  max-width: $container-max-width;
+}
+
+.movie-top {
+  display: flex;
+  flex-wrap: nowrap;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    margin-bottom: 15px;
+  }
+
+  .movie-description {
+    padding: 5px 20px;
+    text-align: left;
+  }
+}
