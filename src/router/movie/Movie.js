@@ -2,7 +2,8 @@ const Movie = {
   name: 'movie',
   data () {
     return {
-      id: 0,
+      id: parseInt(this.$route.params.id),
+      isFavorite: false,
       key: this.$root.config.apiKey,
       movie: {},
       poster: '',
@@ -15,12 +16,52 @@ const Movie = {
     }
   },
   created () {
-    this.id = this.$route.params.id
+    this.checkFavorites()
     this.getDetails()
     this.getTrailers()
     this.getCredits()
   },
+  watch: {
+    isFavorite: function (val, oldVal) {
+      console.log(val, oldVal)
+      var favorites = localStorage.getItem('favorites')
+
+      if (favorites === null) {
+        favorites = []
+      } else {
+        favorites = JSON.parse(favorites)
+      }
+
+      if (val) {
+        console.log('in favorits')
+        favorites.push(this.id)
+      } else {
+        if (favorites.includes(this.id)) {
+          console.log('out favorits')
+          favorites.splice(favorites.indexOf(this.id), 1)
+        }
+      }
+
+      favorites = JSON.stringify(favorites)
+      localStorage.setItem('favorites', favorites)
+    }
+  },
   methods: {
+    clickFavorites () {
+      this.isFavorite = !this.isFavorite
+    },
+
+    checkFavorites () {
+      var favorites = localStorage.getItem('favorites')
+
+      if (favorites !== null) {
+        favorites = JSON.parse(favorites)
+        if (favorites.includes(this.id)) {
+          this.isFavorite = true
+        }
+      }
+    },
+
     getDetails () {
       fetch(
         `https://api.themoviedb.org/3/movie/${this.id}?api_key=${

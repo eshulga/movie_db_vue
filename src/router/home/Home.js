@@ -1,4 +1,4 @@
-import ShortCard from './components/ShortCard/shortCard.vue'
+import ShortCard from '../../components/ShortCard/shortCard.vue'
 
 const Home = {
   name: 'Home',
@@ -9,7 +9,7 @@ const Home = {
 
   props: ['initSearch'],
 
-  data() {
+  data () {
     return {
       key: this.$root.config.apiKey,
       itemsColection: [],
@@ -18,7 +18,7 @@ const Home = {
     }
   },
 
-  mounted() {
+  mounted () {
     console.log('mounted', this)
     if (this.search && this.search !== '') {
       this.searchItems()
@@ -29,7 +29,7 @@ const Home = {
   },
 
   watch: {
-    '$route.query.search'() {
+    '$route.query.search' () {
       this.search = this.initSearch
       if (this.search && this.search !== '') {
         this.searchItems()
@@ -41,7 +41,7 @@ const Home = {
   },
 
   methods: {
-    searchItems: function() {
+    searchItems: function () {
       this.clearItemsCollection()
       fetch(
         'https://api.themoviedb.org/3/search/movie?query=' +
@@ -56,17 +56,17 @@ const Home = {
         })
     },
 
-    clearItemsCollection: function() {
+    clearItemsCollection: function () {
       this.itemsColection = []
     },
 
-    addItemsToCollection: function(data) {
+    addItemsToCollection: function (data) {
       data.results.forEach((element) => {
         this.itemsColection.push(element)
       })
     },
 
-    getItems: function() {
+    getItems: function () {
       fetch(
         'https://api.themoviedb.org/3/movie/top_rated?api_key=' +
           this.key +

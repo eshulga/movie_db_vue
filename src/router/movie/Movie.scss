@@ -39,6 +39,25 @@ ul li {
     display: flex;
     flex-wrap: wrap;
     text-align: left;
+
+    h1 {
+      width: 100%;
+    }
+
+    .controls {
+      .favorits-button {
+        width: 24px;
+        height: 24px;
+        border: none;
+        background-size: contain;
+        background-color: transparent;
+        background-image: url('../../assets/to_favorite.png');
+        
+        &.in_favorite {
+          background-image: url('../../assets/is_favorite.png');
+        }
+      }
+    }
   }
 }
 

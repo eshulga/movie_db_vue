@@ -7,6 +7,9 @@
                 </div>
                 <div class="movie-description">
                     <h1>{{ this.title }}</h1>
+                    <div class="controls">
+                        <button class="favorits-button" @click="clickFavorites()" :class="{ in_favorite: isFavorite }"></button>
+                    </div>
                     <div class="movie-overview" v-if="this.overview">
                         <h2>Описание</h2>
                         <p>{{ this.overview}}</p>
