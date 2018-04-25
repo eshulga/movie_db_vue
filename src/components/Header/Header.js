@@ -5,22 +5,24 @@ const Header = {
   components: {
     sidebar: Sidebar
   },
-  data: function() {
+  data () {
     return {
       toggleActive: false,
       search: ''
     }
   },
   methods: {
-    onScroll() {
+    onScroll () {
       console.log(this.$el.offsetHeigh)
     },
-    toggleSidebar() {
+    toggleSidebar () {
       this.toggleActive = !this.toggleActive
       this.$emit('toggleSidebar')
     },
-    searchMovie() {
-      this.$router.push({ path: '/', query: { search: this.search } })
+    searchMovie () {
+      if (this.search.length > 2) {
+        this.$router.push({ path: '/', query: { search: this.search } })
+      }
     }
   }
 }

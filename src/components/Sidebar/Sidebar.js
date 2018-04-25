@@ -11,7 +11,7 @@ const Sidebar = {
         },
         {
           title: 'Избранное',
-          route: 'favorite'
+          route: 'favorites'
         }
       ]
     }

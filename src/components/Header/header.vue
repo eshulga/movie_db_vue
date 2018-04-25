@@ -12,7 +12,7 @@
         <sidebar />
         <div class="header-bootom-line">
             <div class="wrapper">
-                <input type="text" v-model="search" v-on:change="searchMovie()" placeholder="Поиск...   ">
+                <input type="text" v-model="search" v-on:keyup="searchMovie()" placeholder="Поиск...   ">
             </div>
         </div>
     </header>
