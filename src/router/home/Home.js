@@ -1,11 +1,10 @@
 import ShortCard from '../../components/ShortCard/shortCard.vue'
+import MovieDB from '../../components/MovieDB/MovieDB.js'
 
 const Home = {
   name: 'Home',
 
-  components: {
-    ShortCard: ShortCard
-  },
+  components: { ShortCard },
 
   props: ['initSearch'],
 
@@ -23,7 +22,7 @@ const Home = {
     if (this.search && this.search !== '') {
       this.searchItems()
     } else {
-      this.clearItemsCollection()
+      this.itemsColection = []
       this.getItems()
     }
   },
@@ -34,7 +33,7 @@ const Home = {
       if (this.search && this.search !== '') {
         this.searchItems()
       } else {
-        this.clearItemsCollection()
+        this.itemsColection = []
         this.getItems()
       }
     }
@@ -42,22 +41,11 @@ const Home = {
 
   methods: {
     searchItems: function () {
-      this.clearItemsCollection()
-      fetch(
-        'https://api.themoviedb.org/3/search/movie?query=' +
-          this.search +
-          '&api_key=' +
-          this.key +
-          '&language=ru-RU&page=1&include_adult=false'
-      )
-        .then((res) => res.json())
+      this.itemsColection = []
+      MovieDB.searchMoviesOnQuery(this.search)
         .then((data) => {
           this.addItemsToCollection(data)
         })
-    },
-
-    clearItemsCollection: function () {
-      this.itemsColection = []
     },
 
     addItemsToCollection: function (data) {
@@ -67,12 +55,7 @@ const Home = {
     },
 
     getItems: function () {
-      fetch(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=' +
-          this.key +
-          '&language=ru-RU&page=1'
-      )
-        .then((res) => res.json())
+      MovieDB.getItems()
         .then((data) => {
           this.addItemsToCollection(data)
         })

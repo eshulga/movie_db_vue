@@ -1,5 +1,17 @@
 <template>
-  <h1>Избранное</h1>
+  <div class="main">
+      <div class="movies-wrapper">
+        <short-card
+            v-for="item in itemsColection"
+            :key="item.id"
+            :id="item.id"
+            :title="item.title"
+            :overview="item.overview"
+            :poster="item.poster_path"
+        >
+        </short-card>
+      </div>
+  </div>
 </template>
 
 <script src="./Favorites.js">

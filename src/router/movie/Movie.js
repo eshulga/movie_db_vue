@@ -1,9 +1,12 @@
+import MovieDB from '../../components/MovieDB/MovieDB.js'
+
 const Movie = {
   name: 'movie',
+
   data () {
     return {
       id: parseInt(this.$route.params.id),
-      isFavorite: false,
+      isFavorite: this.checkFavorites(),
       key: this.$root.config.apiKey,
       movie: {},
       poster: '',
@@ -15,15 +18,15 @@ const Movie = {
       crew: []
     }
   },
+
   created () {
-    this.checkFavorites()
     this.getDetails()
     this.getTrailers()
     this.getCredits()
   },
+
   watch: {
     isFavorite: function (val, oldVal) {
-      console.log(val, oldVal)
       var favorites = localStorage.getItem('favorites')
 
       if (favorites === null) {
@@ -33,11 +36,9 @@ const Movie = {
       }
 
       if (val) {
-        console.log('in favorits')
         favorites.push(this.id)
       } else {
         if (favorites.includes(this.id)) {
-          console.log('out favorits')
           favorites.splice(favorites.indexOf(this.id), 1)
         }
       }
@@ -46,6 +47,7 @@ const Movie = {
       localStorage.setItem('favorites', favorites)
     }
   },
+
   methods: {
     clickFavorites () {
       this.isFavorite = !this.isFavorite
@@ -56,31 +58,22 @@ const Movie = {
 
       if (favorites !== null) {
         favorites = JSON.parse(favorites)
-        if (favorites.includes(this.id)) {
-          this.isFavorite = true
+        if (favorites.includes(parseInt(this.$route.params.id))) {
+          return true
         }
+        return false
       }
+      return false
     },
 
     getDetails () {
-      fetch(
-        `https://api.themoviedb.org/3/movie/${this.id}?api_key=${
-          this.key
-        }&language=ru-RU`
-      )
-        .then((res) => res.json())
+      MovieDB.getMovieInfo(this.id)
         .then((data) => this.saveDetails(data))
     },
 
     getCredits () {
-      fetch(
-        `https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=${
-          this.key
-        }&language=ru-RU`
-      )
-        .then((res) => res.json())
+      MovieDB.getMovieCredits(this.id)
         .then((data) => {
-          // console.log(data)
           for (let i = 0; i < 10; i++) {
             this.crew.push(data.crew[i])
             this.cast.push(data.cast[i])
@@ -89,17 +82,13 @@ const Movie = {
     },
 
     getTrailers () {
-      fetch(`https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=${
-        this.key
-      }&language=ru-RU`)
-        .then((res) => res.json())
+      MovieDB.getMovieTrailers(this.id)
         .then((res) => {
           res.results.forEach(element => {
             if (element.type === 'Trailer') {
               this.trailers.push(element)
             }
           })
-          console.log(res)
         })
     },
 
