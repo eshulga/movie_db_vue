@@ -9,7 +9,7 @@
             </div>
             <h1>TOP-киношка</h1>
         </div>
-        <sidebar />
+        <!-- <sidebar /> -->
         <div class="header-bootom-line">
             <div class="wrapper">
                 <input type="text" v-model="search" v-on:keyup="searchMovie()" placeholder="Поиск...   ">

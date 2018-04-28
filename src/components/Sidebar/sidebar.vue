@@ -1,5 +1,8 @@
 <template>
-  <div class="sidebar" :class="{ active: active }">
+  <md-drawer :md-active.sync="active">
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">My App name</span>
+      </md-toolbar>
     <nav>
       <ul>
         <li v-for="(item, index)  in items" :key="index">
@@ -7,8 +10,11 @@
         </li>
       </ul>
     </nav>
-  </div>
+  </md-drawer>
+
 </template>
+
+
 
 <script src="./Sidebar.js"></script>
 

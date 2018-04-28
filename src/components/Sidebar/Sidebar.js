@@ -18,7 +18,7 @@ const Sidebar = {
   },
 
   mounted () {
-    this.$parent.$on('toggleSidebar', () => {
+    this.$eventBus.$on('toggleSidebar', () => {
       this.active = !this.active
     })
   }

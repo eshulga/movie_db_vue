@@ -1,10 +1,10 @@
-import Sidebar from '../Sidebar/sidebar.vue'
+// import Sidebar from '../Sidebar/sidebar.vue'
 
 const Header = {
   name: 'app-header',
-  components: {
-    sidebar: Sidebar
-  },
+  // components: {
+  //   sidebar: Sidebar
+  // },
   data () {
     return {
       toggleActive: false,
@@ -17,7 +17,7 @@ const Header = {
     },
     toggleSidebar () {
       this.toggleActive = !this.toggleActive
-      this.$emit('toggleSidebar')
+      this.$eventBus.$emit('toggleSidebar')
     },
     searchMovie () {
       if (this.search.length > 2) {
