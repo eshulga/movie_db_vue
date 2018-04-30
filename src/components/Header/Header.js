@@ -11,6 +11,7 @@ const Header = {
       search: ''
     }
   },
+
   methods: {
     onScroll () {
       console.log(this.$el.offsetHeigh)

@@ -5,16 +5,13 @@
       </md-toolbar>
     <nav>
       <ul>
-        <li v-for="(item, index)  in items" :key="index">
+        <li v-for="(item, index)  in items" :key="index" @click="toggleSidebar()">
           <router-link :to="{ 'name': item.route }">{{ item.title }}</router-link>
         </li>
       </ul>
     </nav>
   </md-drawer>
-
 </template>
-
-
 
 <script src="./Sidebar.js"></script>
 

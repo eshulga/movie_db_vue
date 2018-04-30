@@ -1,17 +1,7 @@
-.sidebar {
-  position: absolute;
-  z-index: 99;
+.md-drawer {
+  position: fixed;
+  z-index: 100;
   background-color: #fff;
-  padding: 50px 50px;
-  min-width: 250px;
-  min-height: calc(100vh - 105px);
-  box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.35);
-  transition: all 0.5s;
-  transform: translate(-105%);
-
-  &.active {
-    transform: translate(0);
-  }
 
   ul li {
     padding: 15px 0;
@@ -20,4 +10,8 @@
     text-transform: uppercase;
     cursor: pointer;
   }
+}
+
+.md-overlay {
+  z-index: 99;
 }

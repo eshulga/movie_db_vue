@@ -17,6 +17,14 @@ const Sidebar = {
     }
   },
 
+  methods: {
+    toggleSidebar () {
+      setTimeout(() => {
+        this.active = !this.active
+      }, 500)
+    }
+  },
+
   mounted () {
     this.$eventBus.$on('toggleSidebar', () => {
       this.active = !this.active

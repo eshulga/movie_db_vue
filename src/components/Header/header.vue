@@ -2,11 +2,9 @@
     <header>
         <div class="header-top-line"></div>
         <div class="header-line">
-            <div @click="toggleSidebar()" class="sidebar-toggle" :class="{ open: toggleActive }" id="nav-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <md-button @click="toggleSidebar()" class="menu-button md-icon-button md-primary">
+                <md-icon>menu</md-icon>
+            </md-button>
             <h1>TOP-киношка</h1>
         </div>
         <!-- <sidebar /> -->
