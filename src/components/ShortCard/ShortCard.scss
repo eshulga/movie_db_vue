@@ -1,6 +1,5 @@
-@import '../../scss/variables.scss';
-
 .short-card {
+
   &-wrapper {
     margin-bottom: 25px;
     width: 47%;
@@ -11,6 +10,10 @@
     -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+
+    @include respond-to(handhelds){
+      width: 100%;
+    }
   }
 
   &__img {
