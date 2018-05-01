@@ -1,7 +1,7 @@
 <template>
   <md-drawer :md-active.sync="active">
       <md-toolbar class="md-transparent" md-elevation="0">
-        <span class="md-title">My App name</span>
+        <img src="../../assets/img/logo.png" alt="logo">
       </md-toolbar>
     <nav>
       <ul>

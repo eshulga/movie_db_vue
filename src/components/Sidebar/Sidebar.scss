@@ -1,14 +1,37 @@
 .md-drawer {
   position: fixed;
   z-index: 100;
-  background-color: #fff;
+  background-color: rgba(0,0,0, 0.7);
 
-  ul li {
-    padding: 15px 0;
-    list-style: none;
-    text-align: left;
-    text-transform: uppercase;
-    cursor: pointer;
+  ul {
+
+    padding-top: 50px;
+
+    li {
+      padding: 15px 0;
+      padding-right: 30px;
+      list-style: none;
+      text-align: right;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+
+  .router-link-active {
+    color: #fff;
+    font-size: 18px;
+  }
+}
+
+.md-toolbar {
+  padding: 20px 0;
+  text-align: center;
+  background: linear-gradient(0deg, #d03def 11%, #f959c7);
+
+  img {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
   }
 }
 

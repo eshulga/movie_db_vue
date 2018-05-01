@@ -38,10 +38,15 @@ header {
   &-line {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
     align-items: center;
     min-height: 80px;
-    background-color: $color-primary-light;
+    background: linear-gradient(-45deg, #d03def, #e43fb2, #23A6D5, #5e35b1);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 30s ease infinite;
+    -moz-animation: Gradient 30s ease infinite;
+    animation: Gradient 30s ease infinite;
   }
 
   &-bootom-line {
@@ -61,3 +66,38 @@ header {
   }
 }
 
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
