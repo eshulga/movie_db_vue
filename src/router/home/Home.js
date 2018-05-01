@@ -12,13 +12,11 @@ const Home = {
     return {
       key: this.$root.config.apiKey,
       itemsColection: [],
-      search: this.initSearch,
-      msg: 'Welcome to Your Vue.js App'
+      search: this.initSearch
     }
   },
 
   mounted () {
-    console.log('mounted', this)
     if (this.search && this.search !== '') {
       this.searchItems()
     } else {

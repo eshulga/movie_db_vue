@@ -6,6 +6,8 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import { MdDrawer, MdToolbar, MdButton, MdIcon } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
+import vuescroll from 'vue-scroll'
+
 import App from './components/App/App.vue'
 import router from './router'
 import config from './config'
@@ -16,6 +18,8 @@ Vue.use(MdDrawer)
 Vue.use(MdToolbar)
 Vue.use(MdButton)
 Vue.use(MdIcon)
+
+Vue.use(vuescroll)
 
 Vue.prototype.$eventBus = new Vue()
 

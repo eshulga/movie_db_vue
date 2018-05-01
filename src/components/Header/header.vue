@@ -1,17 +1,14 @@
 <template>
     <header>
-        <!-- <div class="header-top-line"></div> -->
         <div class="header-line">
             <md-button @click="toggleSidebar()" class="menu-button md-icon-button md-primary">
                 <md-icon>menu</md-icon>
             </md-button>
-            <!-- <h1>TOP-киношка</h1> -->
             <img src="../../assets/img/logo.png" alt="Logo">
         </div>
-        <!-- <sidebar /> -->
-        <div class="header-bootom-line">
-            <div class="wrapper">
-                <input type="text" v-model="search" v-on:keyup="searchMovie()" placeholder="Поиск...   ">
+        <div class="header-bootom-line search" v-bind:class="{hide: small}">
+            <div class="search-wrapper">
+                <input class="search__input" type="text" v-model="search" placeholder="Поиск..." debounce>
             </div>
         </div>
     </header>

@@ -1,30 +1,43 @@
-// import Sidebar from '../Sidebar/sidebar.vue'
-
 const Header = {
   name: 'app-header',
-  // components: {
-  //   sidebar: Sidebar
-  // },
   data () {
     return {
       toggleActive: false,
-      search: ''
+      search: '',
+      small: '',
+      scroll: ''
+    }
+  },
+
+  watch: {
+    search: function () {
+      this.searchMovie()
     }
   },
 
   methods: {
-    onScroll () {
-      console.log(this.$el.offsetHeigh)
+    handleScroll (event) {
+      this.small = window.scrollY > this.scroll
+      this.scroll = window.scrollY
     },
+
     toggleSidebar () {
       this.toggleActive = !this.toggleActive
       this.$eventBus.$emit('toggleSidebar')
     },
+
     searchMovie () {
       if (this.search.length > 2) {
         this.$router.push({ path: '/', query: { search: this.search } })
       }
     }
+  },
+
+  created () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 
