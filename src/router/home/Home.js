@@ -13,7 +13,7 @@ const Home = {
       key: this.$root.config.apiKey,
       itemsColection: [],
       search: this.initSearch,
-      curentPage: 0
+      curentPage: 1
     }
   },
   created () {
@@ -46,11 +46,20 @@ const Home = {
   },
 
   methods: {
-    handleScroll () {
-
+    handleScroll (event) {
+      this.search || this.infiniteLoadHome()
     },
 
-    searchItems: function () {
+    infiniteLoadHome () {
+      let appHeight = this.$el.scrollHeight + this.$el.offsetTop
+      let windowScroll = window.scrollY + window.innerHeight
+
+      if (appHeight === windowScroll) {
+        this.getItems()
+      }
+    },
+
+    searchItems () {
       this.itemsColection = []
       MovieDB.searchMoviesOnQuery(this.search)
         .then((data) => {
@@ -63,10 +72,12 @@ const Home = {
       data.results.forEach((element) => {
         this.itemsColection.push(element)
       })
+
+      this.curentPage = data.page + 1
     },
 
     getItems: function () {
-      MovieDB.getItems()
+      MovieDB.getItems(this.curentPage)
         .then((data) => {
           this.addItemsToCollection(data)
         })

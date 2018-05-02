@@ -1,8 +1,8 @@
 const MovieDB = {
   API_KEY: 'b4a2ddcffbf736c3e738a03f5fcc609c',
 
-  getItems () {
-    return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.API_KEY}&language=ru-RU&page=1`)
+  getItems (page = 0) {
+    return fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${this.API_KEY}&language=ru-RU&page=${page || 1}`)
       .then((res) => res.json())
   },
 

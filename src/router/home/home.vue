@@ -11,6 +11,9 @@
         >
         </short-card>
       </div>
+      <div class="page-loader">
+        <md-progress-bar md-mode="indeterminate"></md-progress-bar>
+      </div>
   </div>
 </template>
 
