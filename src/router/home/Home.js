@@ -12,8 +12,16 @@ const Home = {
     return {
       key: this.$root.config.apiKey,
       itemsColection: [],
-      search: this.initSearch
+      search: this.initSearch,
+      curentPage: 0
     }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
   },
 
   mounted () {
@@ -38,6 +46,10 @@ const Home = {
   },
 
   methods: {
+    handleScroll () {
+
+    },
+
     searchItems: function () {
       this.itemsColection = []
       MovieDB.searchMoviesOnQuery(this.search)
@@ -47,6 +59,7 @@ const Home = {
     },
 
     addItemsToCollection: function (data) {
+      console.log(data)
       data.results.forEach((element) => {
         this.itemsColection.push(element)
       })
